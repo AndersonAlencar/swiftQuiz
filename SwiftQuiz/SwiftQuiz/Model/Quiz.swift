@@ -22,9 +22,8 @@ class Quiz {
     }
     
     func validateOption(_ index: Int) -> Bool {
-        
-        let answwer = self.options[index]
-        return answwer == self.correctedAnswer
+        let answwer = options[index]
+        return answwer == correctedAnswer
     }
     
     deinit {

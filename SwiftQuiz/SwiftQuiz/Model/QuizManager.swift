@@ -55,11 +55,11 @@ class QuizManager {
     
     
     var question: String {
-        return self.quiz.question
+        return quiz.question
     }
     
     var options: [String] {
-        return self.quiz.options
+        return quiz.options
     }
     var totalAnswers: Int {
         return _totalAnswers
@@ -68,18 +68,18 @@ class QuizManager {
         return _totalCorrectedAnswers
     }
     
-    func refreshQuiz() -> Void {
-        let randomIndex = Int(arc4random_uniform(uint(quizes.count)))
+    func refreshQuiz() {
+        let randomIndex = Int.random(in: 0...quizes.count)
         let quizData = quizes[randomIndex]
-        self.quiz = Quiz(question: quizData.question, options: quizData.options, correctedAnswer: quizData.correctAnswer)
+        quiz = Quiz(question: quizData.question, options: quizData.options, correctedAnswer: quizData.correctAnswer)
         
     }
     
-    func validateAnswer(index: Int) -> Void {
-        self._totalAnswers += 1
+    func validateAnswer(index: Int) {
+        _totalAnswers += 1
         
         if self.quiz.validateOption(index){
-            self._totalCorrectedAnswers += 1
+            _totalCorrectedAnswers += 1
         }
     }
     
