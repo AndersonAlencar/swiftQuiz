@@ -10,6 +10,7 @@ import UIKit
 
 class QuizViewController: UIViewController {
 
+    @IBOutlet weak var viSecond: UIView!
     @IBOutlet weak var viTimer: UIView!
     @IBOutlet weak var lbQuestion: UILabel!
     @IBOutlet var btAnswers: [UIButton]!
@@ -19,27 +20,24 @@ class QuizViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.viTimer.frame.size.width = view.frame.size.width
-        UIView.animate(withDuration: 60.0, delay: 0, options: .curveLinear, animations: {
+        viTimer.frame.size.width = self.view.frame.size.width
+        UIView.animate(withDuration: 1.0, delay: 0, options: .curveLinear, animations: {
             self.viTimer.frame.size.width = 0
+            self.viSecond.frame.size.width = 0
         }) { (success) in
             self.showResults()
         }
-        
         getNewQuiz()
+        print("chamou")
+
     }
-    
-    
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         let resultViewController = segue.destination as! ResultViewController
         resultViewController.totalAnswers = quizManager.totalAnswers
         resultViewController.totalCorrectAnswers = quizManager.totalCorretedAnswers
@@ -54,17 +52,12 @@ class QuizViewController: UIViewController {
         quizManager.refreshQuiz()
         self.lbQuestion.text = quizManager.question
         for i in 0..<quizManager.options.count{
-            self.btAnswers[i].setTitle(quizManager.options[i], for: .normal)
+            btAnswers[i].setTitle(quizManager.options[i], for: .normal)
         }
     }
     
-    
-
-    
     @IBAction func selectAnswer(_ sender: UIButton) {
-        
-        
-        quizManager.validateAnswer(index: self.btAnswers.firstIndex(of: sender)!)
+        quizManager.validateAnswer(index: btAnswers.firstIndex(of: sender)!)
         getNewQuiz()
     }
     

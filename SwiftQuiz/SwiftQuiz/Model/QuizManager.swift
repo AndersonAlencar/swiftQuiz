@@ -69,7 +69,7 @@ class QuizManager {
     }
     
     func refreshQuiz() {
-        let randomIndex = Int.random(in: 0...quizes.count)
+        let randomIndex = Int.random(in: 0..<quizes.count)
         let quizData = quizes[randomIndex]
         quiz = Quiz(question: quizData.question, options: quizData.options, correctedAnswer: quizData.correctAnswer)
         

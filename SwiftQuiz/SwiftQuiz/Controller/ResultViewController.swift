@@ -24,11 +24,11 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.lbAnswred.text = "Perguntas Respondidas: \(self.totalAnswers)"
-        self.lbCorrect.text = "Perguntas Corretas: \(self.totalCorrectAnswers)"
-        self.lbWrong.text = "Perguntas Erradas: \(self.totalAnswers - self.totalCorrectAnswers)"
+        lbAnswred.text = "Perguntas Respondidas: \(totalAnswers)"
+        lbCorrect.text = "Perguntas Corretas: \(totalCorrectAnswers)"
+        lbWrong.text = "Perguntas Erradas: \(totalAnswers - totalCorrectAnswers)"
         
-        self.lbScore.text = "\(self.totalCorrectAnswers*100/self.totalAnswers)"
+        lbScore.text = totalAnswers == 0 ? "0%" : "\(totalCorrectAnswers*100/totalAnswers)%"
     }
     
 
