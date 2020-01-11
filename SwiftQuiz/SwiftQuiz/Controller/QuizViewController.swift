@@ -26,33 +26,35 @@ class QuizViewController: UIViewController {
         super.viewWillAppear(animated)
         
         viTimer.frame.size.width = self.view.frame.size.width
-        UIView.animate(withDuration: 1.0, delay: 0, options: .curveLinear, animations: {
+        UIView.animate(withDuration: 60.0, delay: 0, options: .curveLinear, animations: {
             self.viTimer.frame.size.width = 0
             self.viSecond.frame.size.width = 0
         }) { (success) in
             self.showResults()
         }
         getNewQuiz()
-        print("chamou")
 
     }
 
+    func showResults() {
+        performSegue(withIdentifier: "resultSegue", sender: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let resultViewController = segue.destination as! ResultViewController
         resultViewController.totalAnswers = quizManager.totalAnswers
         resultViewController.totalCorrectAnswers = quizManager.totalCorretedAnswers
     }
     
-    func showResults() -> Void {
-        performSegue(withIdentifier: "resultSegue", sender: nil)
-    }
-    
-    
-    func  getNewQuiz() -> Void {
-        quizManager.refreshQuiz()
-        self.lbQuestion.text = quizManager.question
-        for i in 0..<quizManager.options.count{
-            btAnswers[i].setTitle(quizManager.options[i], for: .normal)
+    func  getNewQuiz() {
+        let noQuestion = quizManager.refreshQuiz()
+        if !noQuestion{
+            lbQuestion.text = quizManager.question
+            for i in 0..<quizManager.options.count{
+                btAnswers[i].setTitle(quizManager.options[i], for: .normal)
+            }
+        } else {
+            showResults()
         }
     }
     

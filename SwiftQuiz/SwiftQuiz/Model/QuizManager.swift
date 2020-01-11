@@ -52,7 +52,16 @@ class QuizManager {
     private var quiz: Quiz!
     private var _totalAnswers  = 0
     private var _totalCorrectedAnswers = 0
-    
+    private lazy var listIndex: [Int] = {
+        var list: [Int] = []
+        while list.count < 14 {
+            let randomNumber = Int.random(in: 0..<quizes.count)
+            if !list.contains(randomNumber){
+                list.append(randomNumber)
+            }
+        }
+        return list
+    }()
     
     var question: String {
         return quiz.question
@@ -68,11 +77,16 @@ class QuizManager {
         return _totalCorrectedAnswers
     }
     
-    func refreshQuiz() {
-        let randomIndex = Int.random(in: 0..<quizes.count)
-        let quizData = quizes[randomIndex]
-        quiz = Quiz(question: quizData.question, options: quizData.options, correctedAnswer: quizData.correctAnswer)
+    func refreshQuiz() -> Bool{
         
+        if listIndex.isEmpty {
+            return true
+        } else {
+            let quizData = quizes[listIndex.first!]
+            listIndex.removeFirst()
+            quiz = Quiz(question: quizData.question, options: quizData.options, correctedAnswer: quizData.correctAnswer)
+            return false
+        }
     }
     
     func validateAnswer(index: Int) {
@@ -82,5 +96,7 @@ class QuizManager {
             _totalCorrectedAnswers += 1
         }
     }
+    
+    
     
 }

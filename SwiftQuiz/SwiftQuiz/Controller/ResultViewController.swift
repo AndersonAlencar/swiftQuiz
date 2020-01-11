@@ -16,7 +16,7 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var lbWrong: UILabel!
     @IBOutlet weak var lbCorrect: UILabel!
     @IBOutlet weak var lbScore: UILabel!
-    
+
     
     var totalCorrectAnswers: Int = 0
     var totalAnswers: Int = 0
