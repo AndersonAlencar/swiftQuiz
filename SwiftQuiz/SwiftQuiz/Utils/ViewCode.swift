@@ -18,7 +18,7 @@ import Foundation
 
 extension ViewCode{
     
-    func SetUp(){
+    func setUp(){
         buildHierarchy()
         setUpConstraints()
         additionalConfigurations?()
