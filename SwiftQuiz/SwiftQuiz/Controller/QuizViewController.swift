@@ -26,10 +26,10 @@ class QuizViewController: UIViewController {
         super.viewWillAppear(animated)
         
         viTimer.frame.size.width = self.view.frame.size.width
-        UIView.animate(withDuration: 60.0, delay: 0, options: .curveLinear, animations: {
+        viSecond.frame.size.width = self.view.frame.size.width
+        UIView.animate(withDuration: 60.0, delay: 0, options: .curveLinear, animations: { [unowned self] in
             self.viTimer.frame.size.width = 0
-            self.viSecond.frame.size.width = 0
-        }) { (success) in
+        }) { [unowned self] (success)  in
             self.showResults()
         }
         getNewQuiz()

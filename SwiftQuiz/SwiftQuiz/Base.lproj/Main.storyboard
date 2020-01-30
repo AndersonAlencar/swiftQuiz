@@ -43,26 +43,27 @@
         <!--Quiz View Controller-->
         <scene sceneID="lFP-lC-W3f">
             <objects>
-                <viewController id="gvw-Wc-du6" customClass="QuizViewController" customModule="SwiftQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="gvw-Wc-du6" customClass="QuizViewController" customModule="SwiftQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bYQ-2w-Dwf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h92-E0-uyT">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h92-E0-uyT">
                                 <rect key="frame" x="0.0" y="30" width="375" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="EOb-1T-hVb"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SuR-nV-V9S">
                                 <rect key="frame" x="0.0" y="30" width="375" height="41"/>
                                 <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="aRo-fW-Hmv"/>
+                                    <constraint firstAttribute="height" constant="41" id="1R9-1G-oQb"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tempo Restante" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXP-67-eTg">
-                                <rect key="frame" x="10" y="42" width="104.5" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tempo Restante" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXP-67-eTg">
+                                <rect key="frame" x="135.5" y="42" width="104.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="1" green="0.89964746172441579" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -136,7 +137,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="SuR-nV-V9S" firstAttribute="top" secondItem="SdM-8x-STe" secondAttribute="top" constant="30" id="Gwg-N8-gFn"/>
+                            <constraint firstItem="pXP-67-eTg" firstAttribute="centerY" secondItem="h92-E0-uyT" secondAttribute="centerY" id="9qL-FO-vrb"/>
+                            <constraint firstItem="h92-E0-uyT" firstAttribute="leading" secondItem="SdM-8x-STe" secondAttribute="leading" id="P9z-y4-k0g"/>
+                            <constraint firstItem="SuR-nV-V9S" firstAttribute="top" secondItem="SdM-8x-STe" secondAttribute="top" constant="30" id="Paq-UI-QWP"/>
+                            <constraint firstItem="h92-E0-uyT" firstAttribute="top" secondItem="SdM-8x-STe" secondAttribute="top" constant="30" id="jBp-F9-8Np"/>
+                            <constraint firstItem="h92-E0-uyT" firstAttribute="trailing" secondItem="SdM-8x-STe" secondAttribute="trailing" id="l7a-E2-6GO"/>
+                            <constraint firstItem="pXP-67-eTg" firstAttribute="centerX" secondItem="h92-E0-uyT" secondAttribute="centerX" id="lwM-bb-Hfi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SdM-8x-STe"/>
                     </view>
@@ -158,9 +164,9 @@
         <!--Result View Controller-->
         <scene sceneID="kWa-Ks-j0P">
             <objects>
-                <viewController id="yyX-R4-8MP" customClass="ResultViewController" customModule="SwiftQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="yyX-R4-8MP" customClass="ResultViewController" customModule="SwiftQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZI0-rx-20e">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resultado" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZdT-29-0c2">
