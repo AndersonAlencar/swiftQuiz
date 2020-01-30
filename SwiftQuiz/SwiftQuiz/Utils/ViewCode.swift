@@ -8,17 +8,14 @@
 
 import Foundation
 
-
 @objc protocol ViewCode {
-    
     func buildHierarchy()
     func setUpConstraints()
     @objc optional func additionalConfigurations()
 }
 
-extension ViewCode{
-    
-    func setUp(){
+extension ViewCode {
+    func setUp() {
         buildHierarchy()
         setUpConstraints()
         additionalConfigurations?()

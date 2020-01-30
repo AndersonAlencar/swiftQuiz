@@ -112,6 +112,7 @@
 				E2002E8E23E3850E00F9A585 /* Sources */,
 				E2002E8F23E3850E00F9A585 /* Frameworks */,
 				E2002E9023E3850E00F9A585 /* Resources */,
+				E2002EB123E3963100F9A585 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -166,6 +167,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E2002EB123E3963100F9A585 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: Swiftlint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E2002E8E23E3850E00F9A585 /* Sources */ = {
@@ -322,7 +343,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.andersonalencar.SwiftQuiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -340,7 +361,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.andersonalencar.SwiftQuiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

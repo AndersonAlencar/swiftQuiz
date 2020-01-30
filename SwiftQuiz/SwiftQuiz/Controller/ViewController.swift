@@ -14,13 +14,9 @@ class ViewController: UIViewController {
         let startView = StartView()
         return startView
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view = startView
     }
-
-
 }
-
