@@ -18,8 +18,9 @@ class QuizView: UIView {
 
     lazy var questionLabel: UILabel = {
         let questionLabel = UILabel()
-        questionLabel.text = "Label para testes"
         questionLabel.numberOfLines = 0
+        questionLabel.text = "Label para testes"
+        questionLabel.textAlignment = .center
         questionLabel.adjustsFontSizeToFitWidth = true
         questionLabel.font = UIFont(name: "HelveticaNeue-Light", size: 30)
         questionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -69,7 +70,8 @@ extension QuizView: ViewCode {
             optionsQuiz.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 15),
             optionsQuiz.leadingAnchor.constraint(equalTo: leadingAnchor),
             optionsQuiz.trailingAnchor.constraint(equalTo: trailingAnchor),
-            optionsQuiz.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20)
+            optionsQuiz.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)
+            //optionsQuiz.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20)
         ])
     }
 

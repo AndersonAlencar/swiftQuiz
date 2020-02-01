@@ -12,6 +12,7 @@ class QuizViewController: UIViewController {
 
     lazy var quizView: QuizView = {
         let quizView = QuizView()
+        quizView.timerView.delegate = self
         return quizView
     }()
 
@@ -23,5 +24,14 @@ class QuizViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         quizView.timerView.animate(timer: 60.0)
+    }
+
+}
+
+extension QuizViewController: TimerQuizViewDelegate {
+    func presentNextController() {
+        let resultController = ResultViewController()
+        resultController.modalPresentationStyle = .fullScreen
+        present(resultController, animated: true, completion: nil)
     }
 }

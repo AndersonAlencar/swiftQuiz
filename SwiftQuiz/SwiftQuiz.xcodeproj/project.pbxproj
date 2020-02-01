@@ -19,6 +19,9 @@
 		E2002EB723E39C5400F9A585 /* TimerQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2002EB623E39C5400F9A585 /* TimerQuizView.swift */; };
 		E2002EB923E39DB600F9A585 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2002EB823E39DB600F9A585 /* Color.swift */; };
 		E2002EC223E4E00900F9A585 /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2002EC123E4E00900F9A585 /* OptionsView.swift */; };
+		E250D75123E5FD39000354F7 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250D75023E5FD39000354F7 /* ResultViewController.swift */; };
+		E250D75323E60DB3000354F7 /* TimerQuizViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250D75223E60DB3000354F7 /* TimerQuizViewDelegate.swift */; };
+		E2B3809E23E4FEE7008826C0 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B3809D23E4FEE7008826C0 /* ResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		E2002EB623E39C5400F9A585 /* TimerQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerQuizView.swift; sourceTree = "<group>"; };
 		E2002EB823E39DB600F9A585 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		E2002EC123E4E00900F9A585 /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
+		E250D75023E5FD39000354F7 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		E250D75223E60DB3000354F7 /* TimerQuizViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerQuizViewDelegate.swift; sourceTree = "<group>"; };
+		E2B3809D23E4FEE7008826C0 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +97,9 @@
 		E2002EAA23E387E200F9A585 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E2002EAF23E38BC000F9A585 /* StartView.swift */,
+				E2B3809F23E4FEF0008826C0 /* StartView */,
 				E2002EBA23E39E2500F9A585 /* QuizView */,
+				E2B380A023E4FF0D008826C0 /* ResultView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -102,6 +109,7 @@
 			children = (
 				E2002E9923E3850E00F9A585 /* ViewController.swift */,
 				E2002EB223E39BE100F9A585 /* QuizViewController.swift */,
+				E250D75023E5FD39000354F7 /* ResultViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -111,6 +119,7 @@
 			children = (
 				E2002EAD23E3896A00F9A585 /* ViewCode.swift */,
 				E2002EB823E39DB600F9A585 /* Color.swift */,
+				E250D75223E60DB3000354F7 /* TimerQuizViewDelegate.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -123,6 +132,22 @@
 				E2002EC123E4E00900F9A585 /* OptionsView.swift */,
 			);
 			path = QuizView;
+			sourceTree = "<group>";
+		};
+		E2B3809F23E4FEF0008826C0 /* StartView */ = {
+			isa = PBXGroup;
+			children = (
+				E2002EAF23E38BC000F9A585 /* StartView.swift */,
+			);
+			path = StartView;
+			sourceTree = "<group>";
+		};
+		E2B380A023E4FF0D008826C0 /* ResultView */ = {
+			isa = PBXGroup;
+			children = (
+				E2B3809D23E4FEE7008826C0 /* ResultView.swift */,
+			);
+			path = ResultView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E250D75323E60DB3000354F7 /* TimerQuizViewDelegate.swift in Sources */,
 				E2002E9A23E3850E00F9A585 /* ViewController.swift in Sources */,
 				E2002EB023E38BC000F9A585 /* StartView.swift in Sources */,
 				E2002E9623E3850E00F9A585 /* AppDelegate.swift in Sources */,
@@ -223,9 +249,11 @@
 				E2002EB323E39BE100F9A585 /* QuizViewController.swift in Sources */,
 				E2002EB523E39C0600F9A585 /* QuizView.swift in Sources */,
 				E2002E9823E3850E00F9A585 /* SceneDelegate.swift in Sources */,
+				E2B3809E23E4FEE7008826C0 /* ResultView.swift in Sources */,
 				E2002EC223E4E00900F9A585 /* OptionsView.swift in Sources */,
 				E2002EAE23E3896A00F9A585 /* ViewCode.swift in Sources */,
 				E2002EB923E39DB600F9A585 /* Color.swift in Sources */,
+				E250D75123E5FD39000354F7 /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

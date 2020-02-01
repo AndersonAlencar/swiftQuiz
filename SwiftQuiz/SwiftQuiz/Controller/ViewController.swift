@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view = startView
     }
+
     @objc func nextController() {
         let quizControoler = QuizViewController()
         quizControoler.modalPresentationStyle = .fullScreen

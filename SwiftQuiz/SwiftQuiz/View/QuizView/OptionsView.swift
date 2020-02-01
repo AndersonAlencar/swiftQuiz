@@ -44,22 +44,23 @@ extension OptionsView: ViewCode {
     }
 
     func setUpConstraints() {
-        print(optionsButtons.count)
         for (index, button) in optionsButtons.enumerated() {
-            if index == 0 {
-                NSLayoutConstraint.activate([
-                    button.topAnchor.constraint(equalTo: topAnchor, constant: 1),
-                    button.leadingAnchor.constraint(equalTo: leadingAnchor),
-                    button.trailingAnchor.constraint(equalTo: trailingAnchor),
-                    button.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.25)
-                ])
-            } else {
-                NSLayoutConstraint.activate([
-                    button.topAnchor.constraint(equalTo: optionsButtons[index-1].bottomAnchor, constant: 1),
-                    button.leadingAnchor.constraint(equalTo: leadingAnchor),
-                    button.trailingAnchor.constraint(equalTo: trailingAnchor),
-                    button.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.25)
-                ])
+
+            switch index {
+                case 0:
+                    NSLayoutConstraint.activate([
+                        button.topAnchor.constraint(equalTo: topAnchor, constant: 1),
+                        button.leadingAnchor.constraint(equalTo: leadingAnchor),
+                        button.trailingAnchor.constraint(equalTo: trailingAnchor),
+                        button.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.25)
+                    ])
+                default:
+                    NSLayoutConstraint.activate([
+                        button.topAnchor.constraint(equalTo: optionsButtons[index-1].bottomAnchor, constant: 1),
+                        button.leadingAnchor.constraint(equalTo: leadingAnchor),
+                        button.trailingAnchor.constraint(equalTo: trailingAnchor),
+                        button.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.25)
+                    ])
             }
         }
     }

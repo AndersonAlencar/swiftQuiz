@@ -10,6 +10,8 @@ import UIKit
 
 class TimerQuizView: UIView {
 
+    weak var delegate: TimerQuizViewDelegate?
+
     lazy var acessoryView: UIView = {
         let acessoryView = UIView()
         acessoryView.backgroundColor = Color.mainColor
@@ -48,9 +50,10 @@ class TimerQuizView: UIView {
         acessoryView.backgroundColor = Color.acessoryColor
         UIView.animate(withDuration: timer, delay: 0, options: .curveLinear, animations: {
             self.timerView.frame.size.width = 0
-        }) { (_) in
-            print("Sucesso! implementar isso depois")
-        }
+        }, completion: { (_) in
+            self.delegate?.presentNextController()
+            self.acessoryView.backgroundColor = Color.mainColor
+        })
     }
 }
 
