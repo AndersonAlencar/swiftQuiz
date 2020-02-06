@@ -19,10 +19,12 @@ class OptionsView: UIView {
         super.init(frame: frame)
         for _ in 0..<numbersOfOptions {
             let button = UIButton()
-            button.setTitleColor(.orange, for: .normal)
-            button.setTitle("Tentativa", for: .normal)
-            button.contentHorizontalAlignment = .left
-            button.backgroundColor = .white
+            button.setTitleColor(.white, for: .normal)
+            button.titleLabel?.numberOfLines = 0
+            button.layer.cornerRadius = 20
+            button.titleLabel?.adjustsFontSizeToFitWidth = true
+            button.contentHorizontalAlignment = .center
+            button.backgroundColor = Color.mainColor
             button.translatesAutoresizingMaskIntoConstraints = false
             optionsButtons.append(button)
         }
@@ -66,6 +68,6 @@ extension OptionsView: ViewCode {
     }
 
     func additionalConfigurations() {
-        backgroundColor = Color.mainColor
+        backgroundColor = .white
     }
 }
