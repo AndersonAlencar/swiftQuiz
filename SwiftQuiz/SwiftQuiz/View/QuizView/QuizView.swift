@@ -10,6 +10,8 @@ import UIKit
 
 class QuizView: UIView {
 
+    // MARK: Instance Variables
+
     lazy var timerView: TimerQuizView = {
         let timerView = TimerQuizView(frame: CGRect.zero, description: "Tempo Restante")
         timerView.translatesAutoresizingMaskIntoConstraints = false
@@ -27,11 +29,13 @@ class QuizView: UIView {
         return questionLabel
     }()
 
-    lazy var optionsQuiz: OptionsView = {
+    lazy var answersQuizView: OptionsView = {
         let optionsQuiz = OptionsView(frame: CGRect.zero, numbersOfOptions: 4)
         optionsQuiz.translatesAutoresizingMaskIntoConstraints = false
         return optionsQuiz
     }()
+
+    // MARK: Builders
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,11 +48,13 @@ class QuizView: UIView {
     }
 }
 
+// MARK: Extensions
+
 extension QuizView: ViewCode {
     func buildHierarchy() {
         addSubview(timerView)
         addSubview(questionLabel)
-        addSubview(optionsQuiz)
+        addSubview(answersQuizView)
     }
 
     func setUpConstraints() {
@@ -67,10 +73,10 @@ extension QuizView: ViewCode {
         ])
 
         NSLayoutConstraint.activate([
-            optionsQuiz.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 15),
-            optionsQuiz.leadingAnchor.constraint(equalTo: leadingAnchor),
-            optionsQuiz.trailingAnchor.constraint(equalTo: trailingAnchor),
-            optionsQuiz.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)
+            answersQuizView.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 15),
+            answersQuizView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            answersQuizView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            answersQuizView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)
             //optionsQuiz.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20)
         ])
     }

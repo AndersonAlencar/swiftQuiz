@@ -9,9 +9,13 @@
 import Foundation
 class QuizQuestion: Codable {
 
+    // MARK: Instance Variables
+
     let question: String
     let options: [String]
     let correctAnswer: String
+
+    // MARK: Builders
 
     init(question: String, options: [String], correctedAnswer: String) {
         self.question = question
@@ -19,9 +23,10 @@ class QuizQuestion: Codable {
         self.correctAnswer = correctedAnswer
     }
 
-    func validateOption(_ index: Int) -> Bool {
-        let answwer = options[index]
-        return answwer == correctAnswer
+    // MARK: Class Functions
+
+    func validateOption(answer: String) -> Bool {
+        return answer == correctAnswer
     }
 
     deinit {

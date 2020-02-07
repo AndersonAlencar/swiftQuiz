@@ -10,6 +10,8 @@ import UIKit
 
 class ResultView: UIView {
 
+    // MARK: Instance Variables
+
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.text = "Resultado"
@@ -65,6 +67,8 @@ class ResultView: UIView {
         return restartButton
     }()
 
+    // MARK: Builders
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
@@ -75,6 +79,8 @@ class ResultView: UIView {
         setUp()
     }
 }
+
+// MARK: Extensions
 
 extension ResultView: ViewCode {
     func buildHierarchy() {

@@ -10,16 +10,17 @@ import UIKit
 
 class QuizViewController: UIViewController {
 
-    let quizManager = QuizManager()
+    // MARK: Instance Variables
 
+    let quizManager = QuizManager.shared
+    var currentQuestion: QuizQuestion?
     lazy var quizView: QuizView = {
         let quizView = QuizView()
         quizView.timerView.delegate = self
-        for button in quizView.optionsQuiz.optionsButtons {
-            button.addTarget(self, action: #selector(getNewQuestion), for: .touchUpInside)
-        }
         return quizView
     }()
+
+    // MARK: Scope Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,18 +37,26 @@ class QuizViewController: UIViewController {
         quizView.timerView.animate(timer: 60.0)
     }
 
-    @objc func getNewQuestion() {
-        let existingQuestion = quizManager.refreshQuiz()
-        if !existingQuestion {
-            quizView.questionLabel.text = quizManager.question
-            for index in 0..<quizView.optionsQuiz.optionsButtons.count {
-                quizView.optionsQuiz.optionsButtons[index].setTitle(quizManager.options[index], for: .normal)
+    // MARK: Class functions
+
+    func getNewQuestion() {
+        currentQuestion = quizManager.newQuestion()
+        if let existingQuestion = currentQuestion {
+            quizView.questionLabel.text = existingQuestion.question
+            for index in 0..<quizView.answersQuizView.optionsButtons.count {
+                quizView.answersQuizView.optionsButtons[index].setTitle(existingQuestion.options[index], for: .normal)
+                quizView.answersQuizView.optionsButtons[index].addTarget(self, action: #selector(answerSelected(_:)), for: .touchUpInside)
             }
         } else {
             presentNextController()
         }
     }
 
+    @objc func answerSelected(_ sender: UIButton) {
+        let success = (currentQuestion?.validateOption(answer: sender.titleLabel!.text!))!
+        quizManager.responseSuccess(success: success)
+        getNewQuestion()
+    }
 }
 
 extension QuizViewController: TimerQuizViewDelegate {

@@ -10,10 +10,14 @@ import UIKit
 
 class OptionsView: UIView {
 
+    // MARK: Instance Variables
+
     lazy var optionsButtons: [UIButton] = {
        let optionsButtons = [UIButton]()
         return optionsButtons
     }()
+
+    // MARK: Builders
 
     init(frame: CGRect, numbersOfOptions: Int) {
         super.init(frame: frame)
@@ -37,6 +41,8 @@ class OptionsView: UIView {
     }
 
 }
+
+// MARK: Extensions
 
 extension OptionsView: ViewCode {
     func buildHierarchy() {

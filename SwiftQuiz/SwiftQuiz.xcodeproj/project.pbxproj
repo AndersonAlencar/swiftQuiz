@@ -137,8 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				E2002EB423E39C0600F9A585 /* QuizView.swift */,
-				E2002EB623E39C5400F9A585 /* TimerQuizView.swift */,
 				E2002EC123E4E00900F9A585 /* OptionsView.swift */,
+				E2002EB623E39C5400F9A585 /* TimerQuizView.swift */,
 			);
 			path = QuizView;
 			sourceTree = "<group>";

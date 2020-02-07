@@ -10,6 +10,8 @@ import UIKit
 
 class TimerQuizView: UIView {
 
+    // MARK: Instance Variables
+
     weak var delegate: TimerQuizViewDelegate?
 
     lazy var acessoryView: UIView = {
@@ -34,6 +36,8 @@ class TimerQuizView: UIView {
         return acessoryLabel
     }()
 
+    // MARK: Builders
+
     init(frame: CGRect, description: String) {
         super.init(frame: frame)
         acessoryLabel.text = description
@@ -44,6 +48,8 @@ class TimerQuizView: UIView {
         super.init(coder: coder)
         setUp()
     }
+
+    // MARK: Class Functions
 
     func animate(timer: Double) {
         self.timerView.frame.size.width = self.frame.size.width
@@ -56,6 +62,8 @@ class TimerQuizView: UIView {
         })
     }
 }
+
+// MARK: Extensions
 
 extension TimerQuizView: ViewCode {
     func buildHierarchy() {

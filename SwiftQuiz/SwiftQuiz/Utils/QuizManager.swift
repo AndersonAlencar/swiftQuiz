@@ -10,6 +10,8 @@ import Foundation
 
 class QuizManager {
 
+    // MARK: Instance Variables
+
     lazy var quizes: [QuizQuestion] = {
         return loadQuizes(data: "questions")
     }()
@@ -18,34 +20,21 @@ class QuizManager {
         return createListQuestions()
     }()
 
-    private var quiz: QuizQuestion!
-    private var totalAnswers  = 0
-    private var totalCorrectedAnswers = 0
+    var totalAnswers  = 0
+    var correctedAnswers = 0
+    static let shared = QuizManager()
+    private init() {}
 
-    var question: String {
-        return quiz.question
-    }
+    // MARK: Class Functions
 
-    var options: [String] {
-        return quiz.options
-    }
-
-    func refreshQuiz() -> Bool {
+    func newQuestion() -> QuizQuestion? {
         if listIndex.isEmpty {
             listIndex = createListQuestions()
-            return true
+            return nil
         } else {
             let quizData = quizes[listIndex.first!]
             listIndex.removeFirst()
-            quiz = quizData
-            return false
-        }
-    }
-
-    func validateAnswer(index: Int) {
-        totalAnswers += 1
-        if self.quiz.validateOption(index) {
-            totalCorrectedAnswers += 1
+            return quizData
         }
     }
 
@@ -68,5 +57,15 @@ class QuizManager {
             print(error.localizedDescription)
         }
         return quizQuestions
+    }
+
+    func responseSuccess(success: Bool) {
+        if success {
+            totalAnswers += 1
+            correctedAnswers += 1
+        } else {
+            totalAnswers += 1
+        }
+
     }
 }
