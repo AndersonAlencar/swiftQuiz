@@ -10,16 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    // MARK: Instance Variables
     lazy var startView: StartView = {
         let startView = StartView()
         startView.startButton.addTarget(self, action: #selector(nextController), for: .touchUpInside)
         return startView
     }()
 
+    // MARK: Scope Methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view = startView
     }
+
+    // MARK: Class Functions
 
     @objc func nextController() {
         let quizControoler = QuizViewController()

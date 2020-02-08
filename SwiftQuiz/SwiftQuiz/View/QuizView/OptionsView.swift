@@ -10,19 +10,25 @@ import UIKit
 
 class OptionsView: UIView {
 
+    // MARK: Instance Variables
+
     lazy var optionsButtons: [UIButton] = {
        let optionsButtons = [UIButton]()
         return optionsButtons
     }()
 
+    // MARK: Builders
+
     init(frame: CGRect, numbersOfOptions: Int) {
         super.init(frame: frame)
         for _ in 0..<numbersOfOptions {
             let button = UIButton()
-            button.setTitleColor(.orange, for: .normal)
-            button.setTitle("Tentativa", for: .normal)
-            button.contentHorizontalAlignment = .left
-            button.backgroundColor = .white
+            button.setTitleColor(.white, for: .normal)
+            button.titleLabel?.numberOfLines = 0
+            button.layer.cornerRadius = 20
+            button.titleLabel?.adjustsFontSizeToFitWidth = true
+            button.contentHorizontalAlignment = .center
+            button.backgroundColor = Color.mainColor
             button.translatesAutoresizingMaskIntoConstraints = false
             optionsButtons.append(button)
         }
@@ -35,6 +41,8 @@ class OptionsView: UIView {
     }
 
 }
+
+// MARK: Extensions
 
 extension OptionsView: ViewCode {
     func buildHierarchy() {
@@ -66,6 +74,6 @@ extension OptionsView: ViewCode {
     }
 
     func additionalConfigurations() {
-        backgroundColor = Color.mainColor
+        backgroundColor = .white
     }
 }

@@ -10,6 +10,8 @@ import UIKit
 
 class StartView: UIView {
 
+    // MARK: Instance Variables
+
     lazy var backgroundImage: UIImageView  = {
         let backgroundImage = UIImageView()
         backgroundImage.image = UIImage(named: "LaunchScreen")
@@ -25,6 +27,8 @@ class StartView: UIView {
         return startButton
     }()
 
+    // MARK: Builders
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
@@ -35,6 +39,8 @@ class StartView: UIView {
     }
 
 }
+
+// MARK: Extensions
 
 extension StartView: ViewCode {
     func buildHierarchy() {
