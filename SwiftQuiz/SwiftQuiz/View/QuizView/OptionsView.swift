@@ -11,6 +11,15 @@ import UIKit
 class OptionsView: UIView {
 
     // MARK: Instance Variables
+    weak var delegate: OptionsViewDelegate?
+
+    var options: [String] = [] {
+        willSet {
+            for index in 0..<optionsButtons.count {
+                optionsButtons[index].setTitle("\(newValue[index])", for: .normal)
+            }
+        }
+    }
 
     lazy var optionsButtons: [UIButton] = {
        let optionsButtons = [UIButton]()
@@ -30,6 +39,7 @@ class OptionsView: UIView {
             button.contentHorizontalAlignment = .center
             button.backgroundColor = Color.mainColor
             button.translatesAutoresizingMaskIntoConstraints = false
+            button.addTarget(self, action: #selector(answerSelected(_:)), for: .touchUpInside)
             optionsButtons.append(button)
         }
         setUp()
@@ -40,6 +50,10 @@ class OptionsView: UIView {
         setUp()
     }
 
+    @objc func answerSelected(_ sender: UIButton) {
+        // MARK: Delegate QuizManager
+        delegate?.didAnswerQuestion(with: sender.titleLabel!.text!)
+    }
 }
 
 // MARK: Extensions

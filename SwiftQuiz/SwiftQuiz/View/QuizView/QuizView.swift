@@ -12,6 +12,22 @@ class QuizView: UIView {
 
     // MARK: Instance Variables
 
+    weak var delegate: QuizViewDelegate?
+
+    var currentQuestion: QuizQuestion? {
+        willSet(newValue) {
+
+            if let quizQuestion = newValue {
+                //seta enunciado
+                questionLabel.text = quizQuestion.question
+                //seta opcoes de resposta
+                optionsQuizView.options = quizQuestion.options
+            } else {
+                delegate?.presentResultViewController()
+            }
+        }
+    }
+
     lazy var timerView: TimerQuizView = {
         let timerView = TimerQuizView(frame: CGRect.zero, description: "Tempo Restante")
         timerView.translatesAutoresizingMaskIntoConstraints = false
@@ -29,7 +45,7 @@ class QuizView: UIView {
         return questionLabel
     }()
 
-    lazy var answersQuizView: OptionsView = {
+    lazy var optionsQuizView: OptionsView = {
         let optionsQuiz = OptionsView(frame: CGRect.zero, numbersOfOptions: 4)
         optionsQuiz.translatesAutoresizingMaskIntoConstraints = false
         return optionsQuiz
@@ -54,7 +70,7 @@ extension QuizView: ViewCode {
     func buildHierarchy() {
         addSubview(timerView)
         addSubview(questionLabel)
-        addSubview(answersQuizView)
+        addSubview(optionsQuizView)
     }
 
     func setUpConstraints() {
@@ -73,10 +89,10 @@ extension QuizView: ViewCode {
         ])
 
         NSLayoutConstraint.activate([
-            answersQuizView.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 15),
-            answersQuizView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            answersQuizView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            answersQuizView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)
+            optionsQuizView.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 15),
+            optionsQuizView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            optionsQuizView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            optionsQuizView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)
             //optionsQuiz.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20)
         ])
     }

@@ -38,11 +38,16 @@ class QuizManager {
         }
     }
 
+    func resetData() {
+        listIndex = createListQuestions()
+        totalAnswers = 0
+        correctedAnswers = 0
+    }
+
     func createListQuestions() -> Set<Int> {
         var array = Set<Int>()
-        while array.count < quizes.count {
-            let randomNumber = Int.random(in: 0..<quizes.count)
-            array.insert(randomNumber)
+        for index in 0..<quizes.count {
+            array.insert(index)
         }
         return array
     }
@@ -66,6 +71,5 @@ class QuizManager {
         } else {
             totalAnswers += 1
         }
-
     }
 }

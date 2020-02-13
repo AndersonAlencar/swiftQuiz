@@ -17,7 +17,8 @@ class ResultViewController: UIViewController {
         showResultsView.restartButton.addTarget(self, action: #selector(restartGame), for: .touchUpInside)
         return showResultsView
     }()
-    lazy var quizmanager: QuizManager = {
+
+    lazy var quizManager: QuizManager = {
         return QuizManager.shared
     }()
 
@@ -25,12 +26,11 @@ class ResultViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view = showResultsView
-        showResultsView.answeredQuestionsLabel.text = "Perguntas respondidas: \(quizmanager.totalAnswers)"
-        showResultsView.correctQuestionsLabel.text = "Perguntas corretas: \(quizmanager.correctedAnswers)"
-        showResultsView.wrongQuestionsLabel.text = "Perguntas Erradas: \(quizmanager.totalAnswers - quizmanager.correctedAnswers)"
-        showResultsView.scoreLabel.text = quizmanager.totalAnswers == 0 ? "0%" : "\((quizmanager.correctedAnswers)*100/quizmanager.totalAnswers)%"
+        showResultsView.showAnswers()
+    }
 
+    override func loadView() {
+        view = showResultsView
     }
 
     // MARK: Class Functions

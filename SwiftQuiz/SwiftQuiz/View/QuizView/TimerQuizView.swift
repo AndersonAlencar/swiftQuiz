@@ -51,6 +51,10 @@ class TimerQuizView: UIView {
 
     // MARK: Class Functions
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+
     func animate(timer: Double) {
         self.timerView.frame.size.width = self.frame.size.width
         acessoryView.backgroundColor = Color.acessoryColor

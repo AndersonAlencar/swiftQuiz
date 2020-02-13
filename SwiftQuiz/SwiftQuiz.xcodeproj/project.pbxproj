@@ -24,6 +24,8 @@
 		E250D75323E60DB3000354F7 /* TimerQuizViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250D75223E60DB3000354F7 /* TimerQuizViewDelegate.swift */; };
 		E250D75723E628EB000354F7 /* QuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250D75623E628EB000354F7 /* QuizQuestion.swift */; };
 		E250D75B23E6344B000354F7 /* QuizManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250D75A23E6344B000354F7 /* QuizManager.swift */; };
+		E2AA5AB423F485D00098D2A6 /* QuizViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AA5AB323F485D00098D2A6 /* QuizViewDelegate.swift */; };
+		E2AA5AB623F487190098D2A6 /* OptionsViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AA5AB523F487190098D2A6 /* OptionsViewDelegate.swift */; };
 		E2B3809E23E4FEE7008826C0 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B3809D23E4FEE7008826C0 /* ResultView.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +49,8 @@
 		E250D75223E60DB3000354F7 /* TimerQuizViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerQuizViewDelegate.swift; sourceTree = "<group>"; };
 		E250D75623E628EB000354F7 /* QuizQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuizQuestion.swift; path = SwiftQuiz/Utils/QuizQuestion.swift; sourceTree = SOURCE_ROOT; };
 		E250D75A23E6344B000354F7 /* QuizManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuizManager.swift; path = SwiftQuiz/Utils/QuizManager.swift; sourceTree = SOURCE_ROOT; };
+		E2AA5AB323F485D00098D2A6 /* QuizViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewDelegate.swift; sourceTree = "<group>"; };
+		E2AA5AB523F487190098D2A6 /* OptionsViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewDelegate.swift; sourceTree = "<group>"; };
 		E2B3809D23E4FEE7008826C0 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +133,8 @@
 				E2002EAD23E3896A00F9A585 /* ViewCode.swift */,
 				E2002EB823E39DB600F9A585 /* Color.swift */,
 				E250D75223E60DB3000354F7 /* TimerQuizViewDelegate.swift */,
+				E2AA5AB323F485D00098D2A6 /* QuizViewDelegate.swift */,
+				E2AA5AB523F487190098D2A6 /* OptionsViewDelegate.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -264,6 +270,8 @@
 				E2B3809E23E4FEE7008826C0 /* ResultView.swift in Sources */,
 				E2002EC223E4E00900F9A585 /* OptionsView.swift in Sources */,
 				E2002EAE23E3896A00F9A585 /* ViewCode.swift in Sources */,
+				E2AA5AB623F487190098D2A6 /* OptionsViewDelegate.swift in Sources */,
+				E2AA5AB423F485D00098D2A6 /* QuizViewDelegate.swift in Sources */,
 				E2002EB923E39DB600F9A585 /* Color.swift in Sources */,
 				E250D75123E5FD39000354F7 /* ResultViewController.swift in Sources */,
 			);

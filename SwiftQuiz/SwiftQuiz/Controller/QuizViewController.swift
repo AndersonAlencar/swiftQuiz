@@ -12,10 +12,16 @@ class QuizViewController: UIViewController {
 
     // MARK: Instance Variables
 
-    let quizManager = QuizManager.shared
-    var currentQuestion: QuizQuestion?
+    var currentQuestion: QuizQuestion? {
+        didSet {
+            quizView.currentQuestion = currentQuestion
+        }
+    }
+
     lazy var quizView: QuizView = {
         let quizView = QuizView()
+        quizView.delegate = self
+        quizView.optionsQuizView.delegate = self
         quizView.timerView.delegate = self
         return quizView
     }()
@@ -24,43 +30,50 @@ class QuizViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+
+    override func loadView() {
         view = quizView
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getNewQuestion()
+        QuizManager.shared.resetData()
+        reloadQuestion()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        quizView.timerView.animate(timer: 60.0)
+        quizView.timerView.animate(timer: 60)
     }
 
-    // MARK: Class functions
-
-    func getNewQuestion() {
-        currentQuestion = quizManager.newQuestion()
-        if let existingQuestion = currentQuestion {
-            quizView.questionLabel.text = existingQuestion.question
-            for index in 0..<quizView.answersQuizView.optionsButtons.count {
-                quizView.answersQuizView.optionsButtons[index].setTitle(existingQuestion.options[index], for: .normal)
-                quizView.answersQuizView.optionsButtons[index].addTarget(self, action: #selector(answerSelected(_:)), for: .touchUpInside)
-            }
-        } else {
-            presentNextController()
-        }
-    }
-
-    @objc func answerSelected(_ sender: UIButton) {
-        let success = (currentQuestion?.validateOption(answer: sender.titleLabel!.text!))!
-        quizManager.responseSuccess(success: success)
-        getNewQuestion()
+    func reloadQuestion() {
+        self.currentQuestion = QuizManager.shared.newQuestion()
     }
 }
 
 extension QuizViewController: TimerQuizViewDelegate {
     func presentNextController() {
+        let resultController = ResultViewController()
+        resultController.modalPresentationStyle = .fullScreen
+        present(resultController, animated: true, completion: nil)
+    }
+}
+
+extension QuizViewController: OptionsViewDelegate {
+    func didAnswerQuestion(with option: String) {
+        // Verifica se resposta foi a correta
+        guard let question = currentQuestion else { return }
+        let success = question.validateOption(answer: option)
+        QuizManager.shared.responseSuccess(success: success)
+        // Carregar próxima pergunta
+        reloadQuestion()
+
+    }
+}
+
+extension QuizViewController: QuizViewDelegate {
+    func presentResultViewController() {
         let resultController = ResultViewController()
         resultController.modalPresentationStyle = .fullScreen
         present(resultController, animated: true, completion: nil)

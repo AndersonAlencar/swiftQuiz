@@ -12,6 +12,10 @@ class ResultView: UIView {
 
     // MARK: Instance Variables
 
+    lazy var quizManager: QuizManager = {
+        return QuizManager.shared
+    }()
+
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.text = "Resultado"
@@ -77,6 +81,15 @@ class ResultView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setUp()
+    }
+
+    // MARK: View Functions
+
+    func showAnswers() {
+        answeredQuestionsLabel.text = "Perguntas respondidas: \(quizManager.totalAnswers)"
+        correctQuestionsLabel.text = "Perguntas corretas: \(quizManager.correctedAnswers)"
+        wrongQuestionsLabel.text = "Perguntas Erradas: \(quizManager.totalAnswers - quizManager.correctedAnswers)"
+        scoreLabel.text = quizManager.totalAnswers == 0 ? "0%" : "\((quizManager.correctedAnswers)*100/quizManager.totalAnswers)%"
     }
 }
 
