@@ -2,66 +2,80 @@
 //  QuizViewController.swift
 //  SwiftQuiz
 //
-//  Created by Anderson Souza on 28/05/19.
-//  Copyright © 2019 Anderson Souza. All rights reserved.
+//  Created by Anderson Alencar on 30/01/20.
+//  Copyright © 2020 Anderson Alencar. All rights reserved.
 //
 
 import UIKit
 
 class QuizViewController: UIViewController {
 
-    @IBOutlet weak var viSecond: UIView!
-    @IBOutlet weak var viTimer: UIView!
-    @IBOutlet weak var lbQuestion: UILabel!
-    @IBOutlet var btAnswers: [UIButton]!
-    
-    
-    let quizManager = QuizManager()
-    
+    // MARK: Instance Variables
+
+    var currentQuestion: QuizQuestion? {
+        didSet {
+            quizView.currentQuestion = currentQuestion
+        }
+    }
+
+    lazy var quizView: QuizView = {
+        let quizView = QuizView()
+        quizView.delegate = self
+        quizView.optionsQuizView.delegate = self
+        quizView.timerView.delegate = self
+        return quizView
+    }()
+
+    // MARK: Scope Methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
+    override func loadView() {
+        view = quizView
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        viTimer.frame.size.width = self.view.frame.size.width
-        viSecond.frame.size.width = self.view.frame.size.width
-        UIView.animate(withDuration: 60.0, delay: 0, options: .curveLinear, animations: { [unowned self] in
-            self.viTimer.frame.size.width = 0
-        }) { [unowned self] (success)  in
-            self.showResults()
-        }
-        getNewQuiz()
-
+        QuizManager.shared.resetData()
+        reloadQuestion()
     }
 
-    func showResults() {
-        performSegue(withIdentifier: "resultSegue", sender: nil)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        quizView.timerView.animate(timer: 60)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let resultViewController = segue.destination as! ResultViewController
-        resultViewController.totalAnswers = quizManager.totalAnswers
-        resultViewController.totalCorrectAnswers = quizManager.totalCorretedAnswers
+
+    func reloadQuestion() {
+        self.currentQuestion = QuizManager.shared.newQuestion()
     }
-    
-    func  getNewQuiz() {
-        let noQuestion = quizManager.refreshQuiz()
-        if !noQuestion{
-            lbQuestion.text = quizManager.question
-            for i in 0..<quizManager.options.count{
-                btAnswers[i].setTitle(quizManager.options[i], for: .normal)
-            }
-        } else {
-            showResults()
-        }
+}
+
+extension QuizViewController: TimerQuizViewDelegate {
+    func presentNextController() {
+        let resultController = ResultViewController()
+        resultController.modalPresentationStyle = .fullScreen
+        present(resultController, animated: true, completion: nil)
     }
-    
-    @IBAction func selectAnswer(_ sender: UIButton) {
-        quizManager.validateAnswer(index: btAnswers.firstIndex(of: sender)!)
-        getNewQuiz()
+}
+
+extension QuizViewController: OptionsViewDelegate {
+    func didAnswerQuestion(with option: String) {
+        // Verifica se resposta foi a correta
+        guard let question = currentQuestion else { return }
+        let success = question.validateOption(answer: option)
+        QuizManager.shared.responseSuccess(success: success)
+        // Carregar próxima pergunta
+        reloadQuestion()
+
     }
-    
-    
+}
+
+extension QuizViewController: QuizViewDelegate {
+    func presentResultViewController() {
+        let resultController = ResultViewController()
+        resultController.modalPresentationStyle = .fullScreen
+        present(resultController, animated: true, completion: nil)
+    }
 }
