@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ResultViewController: UIViewController {
+final class ResultViewController: UIViewController {
 
     // MARK: Instance Variables
 
